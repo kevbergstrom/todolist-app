@@ -65,6 +65,11 @@ app.post("/login", passport.authenticate("local",
 	
 })
 
+app.get("/logout", function(req,res){
+    req.logout()
+    res.redirect("/")
+})
+
 app.get("/dashboard", function(req,res){
     res.render("dashboard")
 })
