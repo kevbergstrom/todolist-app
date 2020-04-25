@@ -8,6 +8,9 @@
 <% todos.forEach(function(todo){ %>
     <div>
         <p><%=todo.description%></p>
+        <form action="/list/<%=todo._id%>/delete?_method=DELETE" method="POST">
+            <button>done</button>
+        </form>
     </div>
 <% }) %>
 

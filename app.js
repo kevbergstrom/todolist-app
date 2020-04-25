@@ -3,6 +3,7 @@ const express = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     bodyParser = require("body-parser"),
+    methodOverride = require("method-override"),
 	User = require("./models/user")
 
 const app = express()
@@ -25,8 +26,10 @@ passport.deserializeUser(User.deserializeUser())
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs")
+mongoose.set('useFindAndModify', false);
 mongoose.set('useUnifiedTopology', true);
 mongoose.connect(DATABASEURL, {useNewUrlParser: true});
+app.use(methodOverride("_method"));
 
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;

@@ -55,4 +55,17 @@ router.post("/", function(req,res){
     })
 })
 
+//DELETE
+router.delete("/:id/delete", function(req,res){
+    List.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            console.log(err)
+        } else {
+            res.redirect("/list")
+        }
+    })
+})
+
+
+
 module.exports = router
