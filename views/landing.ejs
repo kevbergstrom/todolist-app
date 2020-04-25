@@ -1,7 +1,29 @@
 <%- include("partials/header") %>
-
-<h1>Landing Page!</h1>
-<a href="/signup">signup</a>
-<a href="/login">login</a>
+<div class="container-fluid text-center">
+    <div class="container-fluid">
+        <h1>Todolist</h1>
+        <h5>The best todolist app on the market hands down!</h5>
+        <%if(!currentUser){%>
+        <a href="/signup" class="btn btn-success">Sign Up</a>
+        <a href="/login" class="btn btn-success">Login</a>
+        <% } %>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h3>Add todos!</h3>
+                <p>You can add as many todos to your todo list. All of your todos will be saved so you can access them anytime.</p>
+            </div>
+            <div class="col-6">
+                <h3>Finish todos!</h3>
+                <p>Finishing todos is as easy as clicking a button. You've never felt the satisfaction of doing all of the things you set out to do!</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <h3>Woah!</h3>
+        <p>radical</p>
+    </div>
+</div>
 
 <%- include("partials/footer") %>
