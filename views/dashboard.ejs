@@ -1,17 +1,28 @@
 <%- include("partials/header") %>
 
-<h1>Dashboard</h1>
-<p>Hello <%=currentUser.username%></p>
-
-<a href="/list/new">add todo</a>
-
-<% todos.forEach(function(todo){ %>
-    <div>
-        <p><%=todo.description%></p>
-        <form action="/list/<%=todo._id%>/delete?_method=DELETE" method="POST">
-            <button>done</button>
-        </form>
+<div class="container-fluid">
+    <div class="container-fluid text-center">
+        <h1><%=todos.length%> todos</h1>
+        <p>Hello <%=currentUser.username%></p>
     </div>
-<% }) %>
 
+    <div class="row">
+        <div class="col-xs-0 col-sm-2"></div>
+        <div class="col-xs-12 col-sm-8">
+            <form action="/list" method="POST">
+                <input type="text" name="description" placeholder="description" required>
+                <button class="btn btn-success">Add new todo</button>
+            </form>
+            <% todos.forEach(function(todo){ %>
+                <div>
+                    <p><%=todo.description%></p>
+                    <form action="/list/<%=todo._id%>/delete?_method=DELETE" method="POST">
+                        <button class="btn btn-info">Done</button>
+                    </form>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+</div>
 <%- include("partials/footer") %>
