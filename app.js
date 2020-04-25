@@ -28,6 +28,11 @@ app.set("view engine", "ejs")
 mongoose.set('useUnifiedTopology', true);
 mongoose.connect(DATABASEURL, {useNewUrlParser: true});
 
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next()
+})
+
 app.get("/", function(req, res){
     res.render("landing")
 })
@@ -44,10 +49,24 @@ app.post("/signup", function(req,res){
             return res.render("signup")
 		}
 		passport.authenticate("local")(req, res, function(){
-            console.log("authneticated")
-			res.redirect("/")
+			res.redirect("/dashboard")
 		})
 	})
+})
+
+app.get("/login", function(req,res){
+    res.render("login")
+})
+
+app.post("/login", passport.authenticate("local", 
+	{successRedirect: "/dashboard",
+	failureRedirect: "/login"
+	}), function(req,res){
+	
+})
+
+app.get("/dashboard", function(req,res){
+    res.render("dashboard")
 })
 
 app.listen(PORT, function(){
