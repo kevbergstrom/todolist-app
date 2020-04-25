@@ -1,0 +1,10 @@
+<%- include("../partials/header") %>
+
+<div class="container-fluid text-center">
+    <div class="avatar"></div>
+    <h1><%=currentUser.username%>'s Profile</h1>
+    <p><%=currentUser.todoCount%> todos created!</p>
+    <p>Joined on <%=currentUser.created.toLocaleDateString()%></p>
+</div>
+
+<%- include("../partials/footer") %>

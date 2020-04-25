@@ -39,10 +39,12 @@ app.use(function(req, res, next){
 
 //routes
 const indexRoutes = require("./routes/index"),
-    listRoutes = require("./routes/lists")
+    listRoutes = require("./routes/lists"),
+    userRoutes = require("./routes/users")
 
 app.use(indexRoutes)
 app.use("/list", listRoutes)
+app.use("/user", userRoutes)
 
 //server
 app.listen(PORT, function(){

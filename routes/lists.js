@@ -47,6 +47,7 @@ router.post("/", function(req,res){
                 } else {
                     //add comment ref to user
                     foundUser.todos.push(newTodo)
+                    foundUser.todoCount++;
                     foundUser.save()
                     res.redirect("/list");
                 }

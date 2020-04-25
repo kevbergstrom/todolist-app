@@ -6,3 +6,11 @@
     border-radius: 5px;
     padding-top: 20px;
 }
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
