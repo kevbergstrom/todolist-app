@@ -30,6 +30,7 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useUnifiedTopology', true);
 mongoose.connect(DATABASEURL, {useNewUrlParser: true});
 app.use(methodOverride("_method"));
+app.use(express.static(__dirname + "/public"));
 
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
