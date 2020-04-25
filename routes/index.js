@@ -19,7 +19,7 @@ router.post("/signup", function(req,res){
             return res.render("signup")
 		}
 		passport.authenticate("local")(req, res, function(){
-			res.redirect("/dashboard")
+			res.redirect("/list")
 		})
 	})
 })
@@ -29,7 +29,7 @@ router.get("/login", function(req,res){
 })
 
 router.post("/login", passport.authenticate("local", 
-	{successRedirect: "/dashboard",
+	{successRedirect: "/list",
 	failureRedirect: "/login"
 	}), function(req,res){
 	
@@ -38,10 +38,6 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", function(req,res){
     req.logout()
     res.redirect("/")
-})
-
-router.get("/dashboard", function(req,res){
-    res.render("dashboard")
 })
 
 module.exports = router

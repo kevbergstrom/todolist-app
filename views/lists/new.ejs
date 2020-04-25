@@ -1,0 +1,10 @@
+<%- include("../partials/header") %>
+
+<h1>Create a todo</h1>
+
+<form action="/list" method="POST">
+    <input type="text" name="description" placeholder="description" required>
+    <button>Add new todo</button>
+</form>
+
+<%- include("../partials/footer") %>
