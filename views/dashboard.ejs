@@ -3,7 +3,12 @@
 <h1>Dashboard</h1>
 <p>Hello <%=currentUser.username%></p>
 
-<a href="/logout">logout</a>
 <a href="/list/new">add todo</a>
+
+<% todos.forEach(function(todo){ %>
+    <div>
+        <p><%=todo.description%></p>
+    </div>
+<% }) %>
 
 <%- include("partials/footer") %>

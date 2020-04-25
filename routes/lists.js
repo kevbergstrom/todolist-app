@@ -6,7 +6,15 @@ var User = require("../models/user")
 
 //INDEX
 router.get("/", function(req,res){
-    res.render("dashboard")
+    User.findById(req.user._id).populate("todos").exec(function(err, foundUser){
+		if(err || !foundUser){
+            console.log(err)
+			res.redirect("/")
+		} else {
+			//render show template with that campground
+			res.render("dashboard", {todos: foundUser.todos.reverse()});
+		}
+	});
 })
 
 //NEW
@@ -30,17 +38,17 @@ router.post("/", function(req,res){
     User.findById(req.user._id, function(err,foundUser){
         if(err){
             console.log(err)
-            res.redirect("/");
+            res.redirect("/list");
         } else {
             List.create(newList, function(err,newTodo){
                 if(err){
                     console.log(err)
-                    res.redirect("/");
+                    res.redirect("/list");
                 } else {
                     //add comment ref to user
                     foundUser.todos.push(newTodo)
                     foundUser.save()
-                    res.redirect("/");
+                    res.redirect("/list");
                 }
             })
         }

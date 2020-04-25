@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
 	password: String,
 	todos: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: "list"
+		ref: "List"
 	}]
 })
 
