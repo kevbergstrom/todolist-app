@@ -3,8 +3,10 @@ const app = express()
 
 const PORT = process.env.PORT || 3000
 
+app.set("view engine", "ejs")
+
 app.get("/", function(req, res){
-    res.send("Landing Page")
+    res.render("landing")
 })
 
 app.listen(PORT, function(){
