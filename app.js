@@ -33,47 +33,12 @@ app.use(function(req, res, next){
     next()
 })
 
-app.get("/", function(req, res){
-    res.render("landing")
-})
+//routes
+const indexRoutes = require("./routes/index")
 
-app.get("/signup", function(req,res){
-    res.render("signup")
-})
+app.use(indexRoutes)
 
-app.post("/signup", function(req,res){
-    const newUser = new User({username: req.body.username})
-	User.register(newUser, req.body.password, function(err, user){
-		if(err){
-            console.log(err)
-            return res.render("signup")
-		}
-		passport.authenticate("local")(req, res, function(){
-			res.redirect("/dashboard")
-		})
-	})
-})
-
-app.get("/login", function(req,res){
-    res.render("login")
-})
-
-app.post("/login", passport.authenticate("local", 
-	{successRedirect: "/dashboard",
-	failureRedirect: "/login"
-	}), function(req,res){
-	
-})
-
-app.get("/logout", function(req,res){
-    req.logout()
-    res.redirect("/")
-})
-
-app.get("/dashboard", function(req,res){
-    res.render("dashboard")
-})
-
+//server
 app.listen(PORT, function(){
     console.log("Server started at http://localhost:" + PORT)
 })
